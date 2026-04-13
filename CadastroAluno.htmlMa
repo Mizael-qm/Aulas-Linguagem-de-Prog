@@ -175,6 +175,23 @@
                 width: 90%;
             }
         }
+        .card{
+            background-color: #0f3a2ee2;
+            padding: 20px;
+            border-radius: 4px;
+            text-align: center;
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 36px;
+            margin-bottom: 10px;
+        }
+        #dashboard{
+            box-sizing: border-box;
+            flex-direction: column;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
     </style>
 </head>
 
@@ -182,17 +199,35 @@
     <div class="menu">
         <div class="menu-esquerda">EEB DOM JAIME</div>
         <div class="menu-centro">
-            <span>Início</span>
+            <span onclick="navegar('dashboard')">Início</span>
             <span onclick="navegar('alunos')">Alunos</span>
-            <span onclick = "navegar('professores')">Professores</span>
+            <span onclick="navegar('professores')">Professores</span>
             <span onclick="navegar('funcionarios')">Funcionários</span>
+
         </div>
         <div class="menu-direita">
             <span>Login</span>
         </div>
     </div>
 
-    <div id="alunos" class="pagina pagina-ativa">
+    <div id="dashboard" class="pagina pagina-ativa">
+        <div class="card">
+            <h2>Alunos Cadastrados</h2>
+            <p>0</p>
+        </div>
+
+        <div class="card">
+            <h2>Docentes lecionando na unidade</h2>
+            <p>0</p>
+        </div>
+
+        <div class="card">
+            <h2>Funcionarios</h2>
+            <p>0</p>
+        </div>
+    </div>
+
+    <div id="alunos" class="pagina">
         <div class="titulo">
             <h1>EEB Dom Jaime de Barros Camara</h1>
             <p>Cadastro de alunos</p>
@@ -299,4 +334,55 @@
         }
 
         // adiciona só na clicada
-        document.getElementById(pagina).classList.add("pagina-ativa
+        document.getElementById(pagina).classList.add("pagina-ativa");
+        }
+
+        function mostrarDados() {
+            let nome = document.getElementById("nome").value;
+            let dataNasc = document.getElementById("dataNasc").value;
+            let cpf = document.getElementById("cpf").value;
+            let email = document.getElementById("email").value;
+            let cidade = document.getElementById("cidade").value;
+            let estado = document.getElementById("estado").value;
+            let idade = document.getElementById("idade").value;
+
+            let resultado = document.getElementById("resultado");
+            const abaAtiva = document.querySelector('.pagina-ativa').id
+            let atual = parseInt(localStorage.getItem('cont_' + abaAtiva)) || 0;
+            localStorage.setItem('cont_' + abaAtiva, atual + 1);
+
+            document.getElementById("resultado").innerHTML = "<h2>Dados Informados: </h2>" +
+                "Nome: " + nome + "<br>" +
+                "Data de Nascimento: " + dataNasc + "<br>" +
+                "CPF: " + cpf + "<br>" +
+                "Email: " + email + "<br>" +
+                "Cidade: " + cidade + "<br>" +
+                "Estado: " + estado + "<br>" +
+                "Idade: " + idade;
+
+            resultado.style.display = "block";
+            dashboard()
+        }
+        window.onload = dashboard
+
+        function ocultarResultado(){
+            resultado.style.display = "none";
+        }
+
+        function dashboard(){
+            const qtdAlunos = localStorage.getItem('cont_alunos') || 0;
+            const qtdProfs = localStorage.getItem('cont_professores') || 0;
+            const qtdFuncs = localStorage.getItem('cont_funcionarios') || 0;
+
+            const cards = document.querySelectorAll("#dashboard .card p");
+
+            cards [0] = qtdAlunos;
+            cards [1] = qtdProfs;
+            cards [2] = qtdFuncs;
+
+        }
+    </script>
+
+</body>
+
+</html>
