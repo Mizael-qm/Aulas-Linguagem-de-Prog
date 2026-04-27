@@ -1,0 +1,136 @@
+/*import java.util.Scanner;
+
+public class estruturaDerepeticao2{  
+    public static void main(String[] args) {
+        int numero = 5;
+        for(int i = 1; i<= 10; i++){
+           System.out.println(numero + "x" + i + "="+(numero * i));
+ 
+        }
+    }
+}*/
+/*public class estruturaDerepeticao2{  
+    public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+
+     String senhaCoreta = "1234";
+     for(int tentativa = 1; tentativa <= 3; tentativa++){    
+
+
+        System.out.println( "digite a senha");
+        String senha = sc.nextLine();
+
+        if(senha.equals(senhaCoreta)){
+            System.err.println("Acesso liberado");
+            break;
+
+      }
+      else{
+        System.out.println("Senha incorreta");
+         }
+     }
+
+    sc.close();
+  }
+}
+*//*
+import java.util.Scanner;
+
+public class login{
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String usuarioCorreto ="admin";
+        String senhaCorreta ="1234";
+
+        for(int tentativa =1; tentativa <=3; tentativa++){
+            System.out.println("\n---LOOGIN");
+            System.out.println("(Usuario:)");
+            String usuario = sc.nextLine();
+
+            System.out.println("senha");
+            String senha = sc.nextLine();
+            if(usuario.equals(usuarioCorreto)&& senha.equals(senhaCorreta)){
+
+             System.out.println("login realizado com sucesso");  
+             break;
+
+
+            }
+            else{    
+                int restantes = 3 -tentativa;
+                if(restantes > 0){
+                    System.out.println("dados incorretos. tentativas restantes:" + restantes);
+                 }else{
+                   System.out.println("Acesso bloqueado");
+                       
+
+
+                 }
+            }
+
+
+        }  
+    }
+}
+/* */
+import java.util.Scanner;
+
+
+public class SistemaMenu{          
+    /**
+     * @param args
+     */
+    public static void main(String[] args) {
+      Scanner sc = new Scanner(System.in);
+      int option;
+      for (int i = 0; i< 100; i++){
+      System.out.println("\n----<Menu----");
+
+      System.out.println("1 - SOMAR");
+
+      System.out.println("2 - MULTIPLICAR");
+
+      System.out.println("3 - SUBTRIR");
+
+      System.out.println("4 -DIVIDIR");
+
+      System.out.println("5 - SAIR");  
+
+
+option =sc.nextInt();
+switch(option){
+    case 1:
+        System.out.println("Primeiro numero:");
+       int a = sc.nextInt();
+       System.out.println("segundo numero:");
+       int b = sc.nextInt();
+       System.out.println("resultado:" + ( a + b));
+    break;
+
+case 2:
+      System.out.println("Primeiro numero:");
+      int x = sc.nextInt();
+      System.out.println("segundo numero:");
+      int y = sc.nextInt();
+      System.out.println("resultado:" + ( x + y));
+    break;
+
+case 3:
+      System.out.println("Primeiro numero:");
+      int n = sc.nextInt();
+      System.out.println("segundo numero:");
+      int m = sc.nextInt();
+      System.out.println("resultado:" + ( n + m));
+    break;
+case 4:
+      System.out.println("Primeiro numero:");
+      int c = sc.nextInt();
+      System.out.println("segundo numero:");
+      int t = sc.nextInt();
+      System.out.println("resultado:" + ( c + t));
+    break;
+
+    }
+   }
+  }
+}
